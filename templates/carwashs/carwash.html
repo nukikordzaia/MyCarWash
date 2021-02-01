@@ -1,0 +1,47 @@
+{% extends "carwashs/layout.html" %}
+{% block body %}
+<style>
+    ul{
+    font-size: 25px;
+    }
+    a{
+    font-size: 20px;
+    position: absolute;
+    left: 25px;
+    top: 600px;
+
+    }
+    h1,h2{
+     font-size: 35px;
+    }
+</style>
+    <h1> Order {{ carwash.id }}</h1>
+
+    <ul>
+        <li> Address: {{ carwash.address }} </li>
+    </ul>
+
+    <h2> Employees </h2>
+    <ul>
+        {% for employee in employees %}
+            <li> {{ employee }} </li>
+        {% empty %}
+            <li> No employees .</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'index' %}"> Back to Orders list </a>
+
+
+    <h3> Add Employee </h3>
+    <form action ="{% url 'bookwash' carwash.id %}" method="post">
+        {% csrf_token %}
+        <select name="employee">
+            {% for employee in nonemployees %}
+            <option value="{{employee.id }} "> {{ employee }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+
+{% endblock %}

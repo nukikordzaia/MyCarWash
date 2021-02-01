@@ -1,0 +1,121 @@
+{% extends "carwashs/layout.html" %}
+<!DOCTYPE html>
+<html>
+<body>
+
+{% block content %}
+<style>
+h1 {
+  display: block;
+  font-size: 4em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+</style>
+<h1 style="text-align:center">WELCOME!</h1>
+<div class="row">
+  <div class="column">
+    <img src="https://images.squarespace-cdn.com/content/v1/5b55e464372b9686ffab2e81/1592847581795-QL74IYN3XO9SPM116BCH/ke17ZwdGBToddI8pDm48kLqNk-TMwECWPQMUkSrl4tFZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PITkBccKoLmtzha8Ly-kk35KkQeR_EkI-jOZ6M_sMMAroKMshLAGzx4R3EDFOm1kBS/unnamed-3.jpg" alt="carwash" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="https://bloximages.chicago2.vip.townnews.com/journaltimes.com/content/tncms/assets/v3/editorial/1/b2/1b2130db-f395-5e67-af89-b729e1389022/58bf5908ab8a7.image.jpg?resize=1200%2C798" alt="carwash" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="https://thumbs.dreamstime.com/b/young-african-man-casual-wear-washing-wheels-his-luxury-car-self-car-wash-station-outdoors-using-high-pressure-young-191802551.jpg" alt="carwash" style="width:100%">
+  </div>
+</div>
+<div class="zipscar-content">
+<h2>Welcome to Zips Car Wash</h2>
+
+<div class="row">
+<div class="col-md-6 col-sm-6">
+<p>At Zips, we’re revolutionizing the car wash industry. How are we doing it? By building a team of extraordinary people working together in a unique, high performing culture. And we can’t wait to serve you. Come try our great services at any of our 185+ locations across the country for the best car wash experience out there.</p>
+</div>
+
+<div class="col-md-6 col-sm-6">
+<p>We are an express, ride thru tunnel car wash with four car wash options and always free self-serve vacuums. Purchase an Unlimited Wash Club Membership at any of our stores and start saving now on the upkeep and protection of your vehicle. Don't forget to ask us about our Zips Difference!</p>
+</div>
+</div>
+</div>
+
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>Our locations:</h2>
+      <h3> USA :</h3>
+     <ul>
+        <li> 777 Brockton Avenue, Abington MA 2351 </li>
+        <li> 55 Brooksby Village Way, Danvers MA 1923 </li>
+        <li> 20 Soojian Dr, Leicester MA 1524 </li>
+
+    </ul>
+      <h3> Canada :</h3>
+      <ul>
+        <li> 1180 Fall River Avenue, Seekonk MA 2771</li>
+        <li> 10 Charlton Road, Sturbridge MA 1566 </li>
+          <li> 143 Brockton Avenue, Danvers MA 1923 </li>
+    </ul>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Contact:</h2>
+    <h3> Phone number:</h3>
+    <ul>
+        <li> +1 415 5552671</li>
+        <li> +1 521 6566544</li>
+        <li> +1 221 6324345</li>
+
+    </ul>
+<h3> E-mail :</h3>
+
+    <ul>
+        <li> mycarwash@example.com </li>
+        <li> washhere@example.com </li>
+        <li> bestwash@example.com </li>
+    </ul>
+  </div>
+     <div class="column" style="background-color:#aaa;">
+    <h2> Our Companions: </h2>
+         <h3> Companys</h3>
+    <ul>
+        <li> Detailscar.com</li>
+        <li> Coloryourcarhere.com </li>
+        <li> Buycarhere.com</li>
+
+    </ul>
+<h3> E-mail :</h3>
+    <ul>
+        <li> Detailscar@example.com </li>
+        <li> Coloryourcarhere@example.com </li>
+        <li> Buycarhere@example.com </li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
+{% endblock %}
