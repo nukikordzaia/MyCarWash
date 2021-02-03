@@ -39,16 +39,19 @@ ul.topnav li.right {float: right;}
 <body>
 
 <ul class="topnav">
-  <li><a href="{% url 'home' %}">Home</a></li>
-  <li><a href="{% url 'washers' %}">Washers</a></li>
-  <li><a href="{% url 'contact' %}">Contact</a></li>
-  <li class="right"><a href="{% url 'history' %}">History</a></li>
+  <li><a href="{% url 'wash:home' %}">Home</a></li>
+  <li><a href="{% url 'wash:washers' %}">Washers</a></li>
+  <li><a href="{% url 'wash:contact' %}">Contact</a></li>
+  <li class="right"><a href="{% url 'wash:history' %}">History</a></li>
 </ul>
+
+
+
 {% block content %}
 
-
-
-
+<script src="{% static 'js/header-responsive.js' %}"></script>
 </body>
+
 </html>
+
 {% endblock %}

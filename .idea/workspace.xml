@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42e88a5c-fb71-4c01-8893-b93da9855ae3" name="Default Changelist" comment="mycarwash" />
+    <list default="true" id="42e88a5c-fb71-4c01-8893-b93da9855ae3" name="Default Changelist" comment="mycarwash">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyCarWash/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyCarWash/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/carwashs/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carwashs/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/carwashs/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carwashs/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/carwashs/washers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/carwashs/washers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wash/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/wash/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wash/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/wash/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wash/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/wash/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +30,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../copy/MyCarWash" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -57,6 +69,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="MyCarWash" />
