@@ -19,21 +19,6 @@ class WashType(models.Model):
         return self.name
 
 
-class Coupon(models.Model):
-    code = models.CharField(max_length=30, unique=True)
-    expiration_date = models.DateTimeField(verbose_name=_('Coupon Expiration Date'), null=True, blank=True)
-    discount = models.IntegerField(verbose_name=_('Discount'), help_text='%')
-    quantity = models.IntegerField(verbose_name=_('Quantity'), default=1)
-    car_plate = models.CharField(max_length=20, verbose_name=_("Car's license plate"))
-
-    def __str__(self):
-        return self.code
-
-    class Meta:
-        verbose_name = _('Coupon')
-        verbose_name_plural = _('Coupons')
-
-
 class Car(models.Model):
     car_type = models.ForeignKey(
         to='CarType',
@@ -60,11 +45,7 @@ class Order(models.Model):
         null=True, related_name='orders',
     )
     # @TODO: washer_percentage
-    coupon = models.ForeignKey(
-        to='Coupon', related_name='orders',
-        on_delete=models.PROTECT,
-        null=True, blank=True,
-    )
+
     wash_type = models.ForeignKey(
         to='WashType', related_name='orders',
         on_delete=models.PROTECT,

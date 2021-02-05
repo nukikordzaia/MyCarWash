@@ -26,33 +26,21 @@ def contact(request):
 
 def washers(request: WSGIRequest) -> HttpResponse:
     washer_q = Q()
-    order_q = Q()
+
     q = request.GET.get('q')
-
+    print(q)
     if q:
-        washer_q &= Q(first_name__icontains=q[-1]) | Q(last_name__icontains=q[-1])
-        order_q &= Q(employee__first_name__icontains=q[-1]) | Q(employee__last_name__icontains=q[-1])
+        washer_q &= Q(first_name__icontains=q) | Q(last_name__icontains=q)
 
-    profit_q = ExpressionWrapper(
-        F('price') * (1 - F('employee__salary') / Decimal('100.0')),
-        output_field=DecimalField()
-    )
-    order_info: Dict[str, Optional[Decimal]] = Order.objects.filter(end_date__isnull=False).filter(order_q) \
-        .annotate(profit_per_order=profit_q) \
-        .aggregate(profit=Sum('profit_per_order'), total=Count('id'))
 
     context = {
         'washers': User.objects.filter(status=User.Status.washer.value).filter(washer_q).annotate(
             washed_count=Count('orders')),
         # **order_info
     }
-    context.update(order_info)
+
 
     return render(request=request, template_name='carwashs/washers.html', context=context)
-
-
-
-
 
 def washer_detail(request: WSGIRequest, pk: int) -> HttpResponse:
     washer: User = get_object_or_404(
