@@ -1,0 +1,90 @@
+{% extends "carwashs/layout.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>Make order</h1>
+<h4>If you want to add an order, fill out the form: </h4>
+
+<div class="container">
+  <form action="." class="col s12" method="post">
+     {% csrf_token %}
+
+    <label for="cartype">Car Type</label>
+    <select id="cartype" name="cartype">
+      <option value="nissan">Nissan</option>
+      <option value="mazda">Mazda</option>
+      <option value="caddilac">Caddilac</option>
+      <option value="audi">Audi</option>
+      <option value="bmw">BMW</option>
+      <option value="mercedes">Mercedes</option>
+    </select>
+    <label for="employee">Employee</label>
+    <select id="employee" name="employees">
+      <option value="Mike@example.com">Mike Ehrmantraut</option>
+      <option value="gus@example.com">Gus Fring</option>
+      <option value="hank@example.com">Hank Scrader</option>
+      <option value="jesse@example.com">Jesse Pinkman</option>
+      <option value="me@example.com">Jane Margolis</option>
+      <option value="skyler@example.com">Skyler White</option>
+      <option value="wwhite@example.com">Walter White</option>
+    </select>
+    <label for="car">Car</label>
+    <select id="car" name="car">
+      <option value="a">A</option>
+      <option value="aaa">AAA</option>
+      <option value="ffff">FFFF</option>
+      <option value="kkkk">KKKK</option>
+      <option value="mm">MM</option>
+      <option value="nn">NN</option>
+      <option value="bbb">BBB</option>
+    </select>
+    <div class="input field">
+      <label for="note">Add note:</label>
+      <input type="text" id="note" >
+
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action"> Add order </button>
+  </form>
+</div>
+</body>
+</html>
+{% endblock %}
