@@ -1,5 +1,5 @@
 from datetime import datetime
-from wash.models import Car
+from wash.models import Car, Order
 from django.utils import timezone
 from decimal import Decimal
 from typing import Dict, Optional
@@ -8,7 +8,7 @@ from django.db.models import F, Sum, ExpressionWrapper, DecimalField, Count, Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from user.models import User
-from wash.forms import CarForm
+from wash.forms import CarForm, OrderForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -64,6 +64,25 @@ def cars(request):
 
 
 def washer_detail(request: WSGIRequest, pk: int) -> HttpResponse:
+    order_form = OrderForm()
+    if request.method == 'POST':
+        order_form = OrderForm(request.POST)
+        if order_form.is_valid():
+            order: Order = order_form.save(commit=False)
+            order.employee_id = pk
+            try:
+                start_date = datetime.strptime(
+                    " ".join([
+                        order_form.cleaned_data['start_date_day'],
+                        order_form.cleaned_data['start_date_time']
+                    ]),
+                    '%d/%m/%Y %H:%M'
+                )
+                order.start_date = start_date
+                order.save()
+            except ValueError:
+                order_form.add_error('start_date_day', 'please, enter correct data ')
+
     washer: User = get_object_or_404(
         User.objects.filter(status=User.Status.washer.value),
         pk=pk
@@ -103,5 +122,6 @@ def washer_detail(request: WSGIRequest, pk: int) -> HttpResponse:
     )
     return render(request, template_name='carwashs/washer-detail.html', context={
         'washer': washer,
-        **washer_salary_info
+        **washer_salary_info,
+        'order_form': order_form
     })
