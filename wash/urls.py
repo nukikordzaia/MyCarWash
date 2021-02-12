@@ -8,7 +8,7 @@ urlpatterns = [
     path("washers/", views.washers, name="washers"),
     path("history/", views.history, name="history"),
     path('home/', views.home, name="home"),
-    path('contact/', views.contact, name="contact"),
+    path('cars/', views.cars, name="cars"),
     path('washers/<int:pk>/', views.washer_detail, name='washer-detail'),
 
 ]

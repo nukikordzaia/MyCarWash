@@ -1,7 +1,12 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {margin: 0;}
@@ -41,17 +46,17 @@ ul.topnav li.right {float: right;}
 <ul class="topnav">
   <li><a href="{% url 'wash:home' %}">Home</a></li>
   <li><a href="{% url 'wash:washers' %}">Washers</a></li>
-  <li><a href="{% url 'wash:contact' %}">Contact</a></li>
+  <li><a href="{% url 'wash:cars' %}">Cars</a></li>
   <li class="right"><a href="{% url 'wash:history' %}">History</a></li>
 </ul>
 
 
 
 {% block content %}
-
+{% endblock %}
 <script src="{% static 'js/header-responsive.js' %}"></script>
 </body>
 
 </html>
 
-{% endblock %}
+
