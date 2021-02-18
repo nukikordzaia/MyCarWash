@@ -1,0 +1,20 @@
+{% extends "carwashs/layout.html" %}
+
+{% block content %}
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<h3> Welcome, {{ request.user.first_name}}</h3>
+<ul>
+    <li>Username: {{ request.user.first_name }}</li>
+    <li>Email: {{ request.user.email }}</li>
+</ul>
+
+ <a href="{% url 'user:user_logout' %}"> Log out</a>
+{% endblock %}
+

@@ -1,0 +1,102 @@
+{% extends "carwashs/layout.html" %}
+
+{% block content %}
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<div class="container pt-30">
+    <div class="section">
+        <div class="row">
+            <div class="col s12">
+                <form class="col s12" action="." method="POST"
+                      enctype="multipart/form-data" autocomplete="off" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col m6 s12">
+                            {{ form.first_name}}
+                            <label for="{{form.first_name.id_for_label}}">First Name</label>
+                            {% for error in form.errors.first_name %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field col m6 s12">
+                            {{ form.last_name}}
+                            <label for="{{form.last_name.id_for_label}}">Last Name</label>
+                            {% for error in form.errors.last_name %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            {{ form.email }}
+                            <label for="{{form.email.id_for_label}}">Email</label>
+                            {% for error in form.errors.email %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            {{ form.phone_number }}
+                            <label for="{{form.phone_number.id_for_label}}">Phone number</label>
+                            {% for error in form.errors.phone_number %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field  col s12 m4 l4">
+                            {{ form.birthdate }}
+                            <label for="{{form.birthdate.id_for_label}}">Birtdate</label>
+                            {% for error in form.errors.birthdate %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field col m6 s12">
+                            {{ form.password1 }}
+                            <label for="{{form.password1.id_for_label}}">Password</label>
+                            {% for error in form.errors.password1 %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field col m6 s12">
+                             {{ form.password2 }}
+                            <label for="{{form.password2.id_for_label}}">Password</label>
+                            {% for error in form.errors.password2 %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m4 ">
+                            {{ form.image }}
+                            <label for="{{ form.image.id_for_label }}" class="btn waves-effect waves-light"> Add photo
+                                <i class="material-icons right">upload</i>
+                            </label>
+                            {% for error in form.errors.image %}
+                            <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="input-field col s12 m4 ">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Send
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                        <div class="section">
+                            <div class="row">
+                                <div class="col s12 center">
+                                    <a href="{% url 'user:user_login' %}">already have account? </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+
