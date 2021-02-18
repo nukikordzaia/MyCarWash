@@ -36,13 +36,9 @@ def user_login(request):
     form = AuthenticationForm()
     if request.method == "POST":
         form = AuthenticationForm(request=request, data=request.POST)
-        if form is not None:
+        if form.is_valid():
             login(request, form.get_user())
             return render(request, template_name="user/user.html")
-        else:
-            return render(request, "users/login.html", {
-                "message": "Invalid credentials"
-            })
     return render(request, template_name="user/login.html", context={
         'form': form
     })
