@@ -63,6 +63,7 @@ class RegistrationForm(ModelForm):
         user.set_password(self.cleaned_data["password1"])
         user.salary = 0
         user.hire_date = timezone.now()
+        user.status = User.Status.customer
         if commit:
             user.save()
         return user

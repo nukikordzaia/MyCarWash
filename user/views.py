@@ -1,10 +1,14 @@
 from django.contrib.auth import login, logout
-from django.http import  HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
+from django.views import View
+from django.views.generic import CreateView, DetailView, FormView
+
 from user.forms import RegistrationForm
 from user.models import User
-from django.contrib.auth.forms import AuthenticationForm
 
 
 def index(request):
@@ -13,39 +17,36 @@ def index(request):
     return render(request, "user/user.html")
 
 
-def user_registration(request):
-    registration_form = RegistrationForm()
-    if request.method == 'POST':
-        print(request.POST)
-        registration_form: RegistrationForm = RegistrationForm(request.POST, files=request.FILES)
-        print(registration_form.errors)
-        if registration_form.is_valid():
-            customer: User = registration_form.save(commit=False)
-            customer.status = User.Status.customer
-            customer.save()
-            return redirect('user:user_login')
-
-    return render(request, template_name='user/registration.html', context={
-        'form': registration_form
-    })
+class UserRegistrationView(CreateView):
+    model = User
+    form_class = RegistrationForm
+    template_name = 'user/registration.html'
+    success_url = reverse_lazy('user:user_login')
 
 
-def user_login(request):
-    if request.user.is_authenticated:
-        return render(request, template_name="user/user.html")
-    form = AuthenticationForm()
-    if request.method == "POST":
-        form = AuthenticationForm(request=request, data=request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return render(request, template_name="user/user.html")
-    return render(request, template_name="user/login.html", context={
-        'form': form
-    })
+class LoginView(FormView):
+    form_class = AuthenticationForm
+    template_name = 'user/login.html'
+    success_url = reverse_lazy('user:detail')
+
+    def form_valid(self, form):
+        login(self.request, form.get_user())
+        return super().form_valid(form)
 
 
-def user_logout(request):
-    logout(request)
-    return render(request, template_name="user/login.html", context={
-        "message": "Logged out."
-    })
+class UserDetailView(LoginRequiredMixin, DetailView):
+    template_name = 'user/user.html'
+    queryset = User.objects.all()
+
+    def get_object(self, queryset=None):
+        return self.queryset.get(pk=self.request.user.pk)
+
+
+class LogoutView(View):
+
+    @staticmethod
+    def get(request):
+        logout(request)
+        return render(request, template_name="user/login.html", context={
+            "message": "Logged out."
+        })
