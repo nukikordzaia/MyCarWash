@@ -14,7 +14,6 @@ class CarForm(ModelForm):
         fields = '__all__'
 
 
-
 class OrderForm(ModelForm):
     note = CharField(widget=Textarea(attrs={
         'id': 'icon_prefix2',

@@ -43,7 +43,7 @@ input[type=submit]:hover {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-{% for car in cars %}
+{% for car in object_list %}
     {% if forloop.counter0|divisibleby:4 %}
         <div class="row">
             {% endif %}
@@ -79,22 +79,22 @@ input[type=submit]:hover {
   </form>
 </div>
 
-{% if cars.has_other_pages %}
+{% if page_obj.has_other_pages %}
   <ul class="pagination">
-    {% if cars.has_previous %}
-      <li><a href="?page={{ cars.previous_page_number }}">&laquo;</a></li>
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
     {% else %}
       <li class="disabled"><span>&laquo;</span></li>
     {% endif %}
-    {% for i in cars.paginator.page_range %}
-      {% if cars.number == i %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
         <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
       {% else %}
         <li><a href="?page={{ i }}">{{ i }}</a></li>
       {% endif %}
     {% endfor %}
-    {% if cars.has_next %}
-      <li><a href="?page={{ cars.next_page_number }}">&raquo;</a></li>
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
     {% else %}
       <li class="disabled"><span>&raquo;</span></li>
     {% endif %}
